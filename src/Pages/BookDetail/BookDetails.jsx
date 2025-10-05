@@ -8,15 +8,83 @@ const BookDetails = () => {
   const singleDetailsBook = detailsBook.find((book) => book.bookId === getId);
   console.log(singleDetailsBook);
 
-  const { image, bookName } = singleDetailsBook;
+  const {
+    image,
+    bookName,
+    author,
+    category,
+    review,
+    tags,
+    totalPages,
+    rating,
+    yearOfPublishing,
+    publisher,
+  } = singleDetailsBook;
 
   return (
-    <div className="flex">
+    <div className="flex my-5 gap-9">
       <div>
-        <h1>Img</h1>
+        <figure>
+          <img
+            className="h-[650px] shadow-2xl rounded-2xl"
+            src={image}
+            alt={bookName}
+          />
+        </figure>
       </div>
+      <div className="flex-1">
+        <h1 className="font-bold text-5xl">{bookName}</h1>
+        <h2 className="font-semibold text-xl my-3">{author}</h2>
+        <div className="border-t-1 border-dotted text-gray-300 my-2"></div>
+        <h2 className="font-semibold text-xl">{category}</h2>
+        <div className="border-t-1 border-dotted text-gray-300 my-2"></div>
+        <p className="text-justify">
+          <span className="font-semibold">Review: </span>
+          {review}
+        </p>
+        <div className="">
+          <p className="my-9 flex gap-10 items-center">
+            <span className="font-semibold">Tag</span>
+            <p className="flex gap-6">
+              {tags.map((tag) => (
+                <div className="text-green-600 "># {tag}</div>
+              ))}
+            </p>
+          </p>
+        </div>
+        <div className="border-t-1 border-dotted text-gray-300 my-2"></div>
+        <div className="space-y-4">
+          <div className="flex gap-24">
+            <p className="flex-1">Number of Pages:</p>
+            <p className="flex-3 font-semibold">
+              <span>{totalPages}</span>
+            </p>
+          </div>
+          <div className="flex gap-24">
+            <p className="flex-1">Publisher:</p>
+            <p className="flex-3 font-semibold">
+              <span>{publisher}</span>
+            </p>
+          </div>
+          <div className="flex gap-24">
+            <p className="flex-1">Year:</p>
+            <p className="flex-3 font-semibold">
+              <span>{yearOfPublishing}</span>
+            </p>
+          </div>
+          <div className="flex gap-24">
+            <p className="flex-1">Rating:</p>
+            <p className="flex-3 font-semibold">
+              <span>{rating}</span>
+            </p>
+          </div>
+        </div>
 
-      <h1>{bookName}</h1>
+        <div className="mt-5 flex gap-5">
+          <button className="btn">Read</button>
+          <button className="btn btn-primary">Wishlist</button>
+        </div>
+      </div>
     </div>
   );
 };
