@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router";
+
 const Book = ({ SinBook }) => {
   const {
     image,
@@ -6,39 +8,44 @@ const Book = ({ SinBook }) => {
     yearOfPublishing,
     author,
     category,
+    bookId,
     rating,
     tags,
   } = SinBook;
 
   return (
-    <div className="">
-      <div className="card bg-base-100 h-[450px] shadow-sm border p-5">
-        <figure className="p-4 bg-amber-100 w-2/3 mx-auto rounded-lg">
-          <img className="h-[166px] " src={image} alt="Shoes" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title text-2xl ">
-            {bookName}
-            <div className="badge badge-secondary">{yearOfPublishing}</div>
-          </h2>
-          <h2>{author}</h2>
-          <div className="flex justify-between items-center">
-           <p className="flex-5">
-            {" "}
-            Pages: <span className="font-semibold">{totalPages}</span>
-          </p> 
-          <p className="flex-1">{rating} ⭐</p>
-          </div>
-          
-          <div className="card-actions justify-end">
-            {tags.map((tag) => console.log(tag))}
+    <NavLink to={`/bookdetails/${bookId}`}>
+      <div>
+        <div className="card bg-base-100 h-[450px] shadow-sm border p-5">
+          <figure className="p-4 bg-gray-100 w-2/3 mx-auto rounded-lg">
+            <img className="h-[166px]" src={image} alt="Shoes" />
+          </figure>
+          <div className="card-body">
+            <div className=" ">
+              <h2 className="card-title text-2xl  ">
+                {bookName}
+                <div className="badge badge-secondary ">{yearOfPublishing}</div>
+              </h2>
+            </div>
 
-            {/* <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div> */}
+            <h2>{author}</h2>
+            <div className="border-t-1 border-dotted text-gray-300 my-2"></div>
+            <div className="flex justify-between items-center">
+              <p className="flex-5">
+                {" "}
+                Pages: <span className="font-semibold">{totalPages}</span>
+              </p>
+              <p className="flex-1">{rating} ⭐</p>
+            </div>
+            <div className="card-actions  ">
+              {tags.map((tag) => (
+                <div className="badge badge-outline">{tag}</div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 
